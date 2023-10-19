@@ -8,7 +8,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='HTTPServer',
+    name='http_server',
     version='0.1',
     description='HTTPS server.',
     long_description=long_description,
@@ -20,5 +20,5 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
         ],
-    py_modules=['HTTPServer']
+    py_modules=['http_server']
 )
