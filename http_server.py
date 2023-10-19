@@ -167,8 +167,8 @@ def split_or_none(val):
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(
-        description='An HTTPS server with Basic authentication '
-                    'and client certificate authentication',
+        description='HTTPS server'
+                    '(basic auth and client cert auth)',
         formatter_class=argparse.RawTextHelpFormatter)
 
     parser.add_argument('port', nargs='?', type=int, default=8000)
