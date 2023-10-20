@@ -23,7 +23,7 @@ openssl req -newkey rsa:2048 -nodes -days 365000 \
    -out server-req.pem
 
 # 2. Generate the X509 certificate for the server
-openssl x509 -req -days 365000 -set_serial 01 \
+openssl x509 -req -days 365 -set_serial 01 \
        -in server-req.pem \
        -out server-cert.pem \
        -CA ca-cert.pem \
@@ -41,11 +41,13 @@ openssl req -newkey rsa:2048 -nodes -days 365000 \
    -out client-req.pem
 
 # 2. Generate the X509 certificate for the client
-openssl x509 -req -days 365000 -set_serial 01 \
+openssl x509 -req -days 365 -set_serial 01 \
        -in client-req.pem \
        -out client-cert.pem \
        -CA ca-cert.pem \
-       -CAkey ca-key.pem
+       -CAkey ca-key.pem \
+       -extfile client.cnf \
+       -extensions client
 
 # 3. Generate the client chain (certificate + key)
 openssl pkcs12 -export -out client-chain.pfx \
