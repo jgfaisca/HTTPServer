@@ -41,7 +41,7 @@ openssl req -newkey rsa:2048 -nodes -days 365000 \
    -out client-req.pem
 
 # 2. Generate the X509 certificate for the client
-openssl x509 -req -days 365 -set_serial 01 \
+openssl x509 -req -days 365 -CAcreateserial \
        -in client-req.pem \
        -out client-cert.pem \
        -CA ca-cert.pem \
