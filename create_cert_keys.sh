@@ -29,6 +29,9 @@ openssl x509 -req -days 365000 -set_serial 01 \
        -CA ca-cert.pem \
        -CAkey ca-key.pem
 
+# 3. Generate the server chain file (certificate + ke)
+cat server-cert.pem server-key.pem > server-chain.pem
+
 ## Creating the Client's Certificate and Keys ##
 echo "Creating the Client's Certificate and Keys ..."
 
