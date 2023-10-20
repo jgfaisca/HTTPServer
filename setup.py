@@ -8,9 +8,9 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='http_server',
+    name='https_server_auth',
     version='0.1',
-    description='HTTPS server.',
+    description='HTTPS server auth.',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/jgfaisca/HTTPServer',
@@ -20,5 +20,5 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
         ],
-    py_modules=['http_server']
+    py_modules=['https_server_auth']
 )
