@@ -3,7 +3,7 @@ import ssl
 import sys
 
 def serve(host, port, cert_fpath, privkey_fpath):
-    context = ssl.SSLContext(ssl.PROTOCOL_TLS)
+    context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
     context.load_cert_chain(certfile=cert_fpath, keyfile=privkey_fpath, password='')
     server_address = (host, port)
     httpd = http.server.HTTPServer(server_address, http.server.SimpleHTTPRequestHandler)
