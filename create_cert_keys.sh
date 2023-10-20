@@ -47,6 +47,12 @@ openssl x509 -req -days 365000 -set_serial 01 \
        -CA ca-cert.pem \
        -CAkey ca-key.pem
 
+# 3. Generate the client chain (certificate + key)
+openssl pkcs12 -export -out client-chain.pfx \
+       -inkey client-key.pem \
+       -in client-cert.pem \
+       -certfile ca-cert.pem
+
 ## Verifying the Certificates ##
 echo "Verifying the Certificates ..."
 
