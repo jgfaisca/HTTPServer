@@ -4,6 +4,7 @@
 #
 
 ## Creating the Certificate Authority's Certificate and Keys ##
+echo "Creating the Certificate Authority's Certificate and Keys ..."
 
 # 1. Generate a private key for the CA
 openssl genrsa 2048 > ca-key.pem
@@ -14,6 +15,7 @@ openssl req -new -x509 -nodes -days 365000 \
        -out ca-cert.pem
 
 ## Creating the Server's Certificate and Keys ##
+echo "Creating the Server's Certificate and Keys ..."
 
 # 1. Generate the private key and certificate request
 openssl req -newkey rsa:2048 -nodes -days 365000 \
@@ -28,6 +30,7 @@ openssl x509 -req -days 365000 -set_serial 01 \
        -CAkey ca-key.pem
 
 ## Creating the Client's Certificate and Keys ##
+echo "Creating the Client's Certificate and Keys ..."
 
 # 1. Generate the private key and certificate request
 openssl req -newkey rsa:2048 -nodes -days 365000 \
@@ -42,6 +45,7 @@ openssl x509 -req -days 365000 -set_serial 01 \
        -CAkey ca-key.pem
 
 ## Verifying the Certificates ##
+echo "Verifying the Certificates ..."
 
 # 1. Verify the server certificate:
 openssl verify -CAfile ca-cert.pem \
