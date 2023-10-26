@@ -7,10 +7,10 @@
 echo "Creating the Certificate Authority's Certificate and Keys ..."
 
 # 1. Generate a private key for the CA
-openssl genrsa 2048 > ca-key.pem
+openssl genrsa -out ca-key.pem 2048
 
 # 2. Generate the X509 certificate for the CA
-openssl req -new -x509 -nodes -days 365000 \
+openssl req -new -x509 -nodes -sha256 -days 365 \
        -key ca-key.pem \
        -out ca-cert.pem
 
@@ -18,12 +18,12 @@ openssl req -new -x509 -nodes -days 365000 \
 echo "Creating the Server's Certificate and Keys ..."
 
 # 1. Generate the private key and certificate request
-openssl req -newkey rsa:2048 -nodes -days 365000 \
+openssl req -newkey rsa:2048 -nodes -days 365 \
    -keyout server-key.pem \
    -out server-req.pem
 
 # 2. Generate the X509 certificate for the server
-openssl x509 -req -days 365 -set_serial 01 \
+openssl x509 -req -days 365 -sha256 -set_serial 01 \
        -in server-req.pem \
        -out server-cert.pem \
        -CA ca-cert.pem \
@@ -36,12 +36,12 @@ cat server-cert.pem server-key.pem > server-chain.pem
 echo "Creating the Client's Certificate and Keys ..."
 
 # 1. Generate the private key and certificate request
-openssl req -newkey rsa:2048 -nodes -days 365000 \
+openssl req -newkey rsa:2048 -nodes -days 365 \
    -keyout client-key.pem \
    -out client-req.pem
 
 # 2. Generate the X509 certificate for the client
-openssl x509 -req -days 365 -CAcreateserial \
+openssl x509 -req -days 365 -sha256 -CAcreateserial \
        -in client-req.pem \
        -out client-cert.pem \
        -CA ca-cert.pem \
