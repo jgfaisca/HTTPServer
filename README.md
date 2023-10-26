@@ -57,6 +57,10 @@ $ python -m https_server_auth -b 127.0.0.1
 
 # Enable IPv6.
 $ python -m https_server_auth -b ::
+
+# Verify client certificate pfx
+$ openssl pkcs12 -info -in client-chain.pfx
+
 ...
 
 
