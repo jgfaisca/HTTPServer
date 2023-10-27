@@ -1,0 +1,15 @@
+#
+# Testing SSL/TLS Client Authentication with openssl
+#
+
+# Create a test file
+echo "Hello!" > test.txt
+
+# Setup an SSL/TLS server that checks the client certificate
+openssl s_server -cert server-cert.pem -key server-key.pem -WWW -port 4433 -CAfile ca-cert.pem -verify_return_error -Verify 1
+
+# Test the server with client certificate 
+echo -e 'GET /test.txt HTTP/1.1\r\n\r\n' | openssl s_client -cert client-cert.pem -key client-key.pem -CAfile ca-cert.pem -connect localhost:4433 -quiet
+
+# Alternatively test the server using curl 
+curl -k --cert client-cert.pem --key client-key.pem https://localhost:4433/test.txt
