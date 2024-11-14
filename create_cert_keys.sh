@@ -2,6 +2,8 @@
 # 
 # Create Self-Signed Certificates and Keys with openssl
 #
+# Author: Jose Faisca
+#
 
 ## Creating the Certificate Authority's Certificate and Keys ##
 echo "Creating the Certificate Authority's Certificate and Keys ..."
