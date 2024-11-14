@@ -92,16 +92,18 @@ class HTTPSAuthServer(Server):
     def set_certs(self, servercert=None, cacert=None):
         self.servercert = servercert
         self.cacert = cacert
-
         if servercert is not None:
             self.protocol = 'HTTPS'
+            # Create an SSL context
+            context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+            # Load the server certificate and key
+            context.load_cert_chain(certfile=servercert)
             if cacert is not None:
                 self.certreqs = ssl.CERT_REQUIRED
-
-            self.socket = ssl.wrap_socket(self.socket, certfile=servercert,  
-                                          server_side=True,
-                                          cert_reqs=self.certreqs,
-                                          ca_certs=self.cacert)
+                # Load CA certificates
+                context.load_verify_locations(cafile=cacert)
+            # Wrap the socket using the SSL context
+            self.socket = context.wrap_socket(self.socket, server_side=True)
 
     def server_bind(self):
         try:
