@@ -1,3 +1,9 @@
+# 
+# HTTP server auth setup
+#
+# Author: Jose Faisca
+#
+
 from setuptools import setup
 from os import path
 from io import open
