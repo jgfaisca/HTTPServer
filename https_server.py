@@ -1,3 +1,9 @@
+# 
+# Simple HTTP server
+#
+# Author: Jose Faisca
+#
+
 import http.server
 import ssl
 import sys
