@@ -1,3 +1,10 @@
+#
+# HTTP Server that implements basic authentication 
+# and client certificate authentication
+#
+# Author: Jose Faisca
+#
+
 import base64
 import os
 import random
@@ -41,7 +48,7 @@ class AuthHandler(Handler):
         auth_header = self.headers.get('Authorization')
         if auth_header is None:
             self.send_auth_request()
-            self.wfile.write('<h1>Authorization Required</h1>'.encode())
+            self.wfile.write('<h4>Authorization Required</h4>'.encode())
             print('no auth header received')
             return False
 
