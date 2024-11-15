@@ -1,5 +1,5 @@
 #
-# HTTP Server that implements basic authentication 
+# HTTP Server that implements SSL/TLS encryption, basic authentication 
 # and client certificate authentication
 #
 # Author: Jose Faisca
@@ -31,7 +31,6 @@ ENV_USERS = 'SIMPLE_HTTPS_USERS'
 ENV_PASSWORDS = 'SIMPLE_HTTPS_PASSWORDS'
 ENV_KEYS = 'SIMPLE_HTTPS_KEYS'
 
-
 class AuthHandler(Handler):
     def send_auth_request(self):
         self.send_response(UNAUTHORIZED)
@@ -48,7 +47,7 @@ class AuthHandler(Handler):
         auth_header = self.headers.get('Authorization')
         if auth_header is None:
             self.send_auth_request()
-            self.wfile.write('<h4>Authorization Required</h4>'.encode())
+            self.wfile.write('<h1>Authorization Required</h1>'.encode())
             print('no auth header received')
             return False
 
