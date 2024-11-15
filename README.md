@@ -39,8 +39,8 @@ $ python -m https_server_auth -s /path/to/server/server-chain.pem
 $ python -m https_server_auth -s /path/to/server/server-chain.pem -c /path/to/CA/ca-cert.pem
 
 # Enable Basic authentication.
-# Create user 'alice' with password '4321', and user 'bob' with password '8756'.
-$ python -m https_server_auth -u alice bob -p 4321 8756
+# Create user 'alice' with password '4321', and user 'bob' with password '8765'.
+$ python -m https_server_auth -u alice bob -p 4321 8765
 
 # Environment variables are also available.
 $ export SIMPLE_HTTPS_USERS='alice bob'
