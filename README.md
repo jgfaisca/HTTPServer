@@ -44,7 +44,7 @@ $ python -m https_server_auth -u alice bob -p 4321 8756
 
 # Environment variables are also available.
 $ export SIMPLE_HTTPS_USERS='alice bob'
-$ export SIMPLE_HTTPS_PASSWORDS='4321 8756'
+$ export SIMPLE_HTTPS_PASSWORDS='4321 8765'
 
 # Enable multi-thread.
 $ python -m https_server_auth -t
